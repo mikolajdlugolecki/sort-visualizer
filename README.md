@@ -8,7 +8,7 @@ This program uses the SFML library to visualize how different sorting algorithms
 * [Controls](#controls)
 
 ## Preview
-https://github.com/user-attachments/assets/5ddb23e8-4f93-499e-9a15-d6c344f15580
+https://github.com/user-attachments/assets/271d1a96-ca2c-44f5-a007-fc345084b848
 
 ## Requirements
 * [SFML](https://www.sfml-dev.org/) (v3.0.0 or higher)
