@@ -1,13 +1,14 @@
 # Sorting Algorithms Visualizer
-
+This program uses the SFML library to visualize how different sorting algorithms work.
 
 ## Table of Contents
-* [Preview][#preview]
+* [Preview](#preview)
 * [Requirements](#requirements)
 * [Installation](#installation)
-* [Controls][#controls]
+* [Controls](#controls)
 
 ## Preview
+https://github.com/user-attachments/assets/5ddb23e8-4f93-499e-9a15-d6c344f15580
 
 ## Requirements
 * [SFML](https://www.sfml-dev.org/) (v3.0.0 or higher)
