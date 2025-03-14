@@ -1,7 +1,5 @@
 #pragma once
 
-#include "Algorithms.h"
-
 #include <iostream>
 #include <vector>
 #include <cstdlib>
@@ -11,11 +9,34 @@
 
 #define WIDTH 1600
 #define HEIGHT 900
+#define TITLE "Sorting Algorithms Visualizer"
 
 class Application
 {
 public:
-    unsigned short int screen_width = WIDTH;
-    unsigned short int screen_height = HEIGHT; 
+    Application();
+    ~Application();
     void run(void);
+private:
+    unsigned short int screenWidth = WIDTH;
+    unsigned short int screenHeight = HEIGHT;
+    sf::RenderWindow mainWindow;
+    std::string mainWindowTitle = TITLE;
+    bool canPressAgain;
+    std::vector<int> array;
+    int n;
+    float barWidth;
+    float barHeight;
+    std::vector<sf::RectangleShape*> bars;
+    void updateFrame(void);
+    void shuffleArray(void);
+    void swap(int &a, int &b);
+    void bubbleSort();
+    void insertionSort();
+    void heapSort();
+    void constructHeap(std::vector<int>& arr, int n, int i);
+    void quickSort(int left, int right);
+    int divide(int left, int right);
+    void mergeSort(int left, int right);
+    void merge(int left, int mid, int right);
 };

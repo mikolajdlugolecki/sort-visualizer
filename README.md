@@ -5,6 +5,7 @@ This program uses the SFML library to visualize how different sorting algorithms
 * [Preview](#preview)
 * [Requirements](#requirements)
 * [Installation](#installation)
+* [Algorithms](#algorithms)
 * [Controls](#controls)
 
 ## Preview
@@ -36,9 +37,25 @@ make
 ./visualizer
 ```
 
+## Algorithms
+* [Bubble Sort](https://en.wikipedia.org/wiki/Bubble_sort)
+* [Insertion Sort](https://en.wikipedia.org/wiki/Insertion_sort)
+* [Heap Sort](https://en.wikipedia.org/wiki/Heapsort)
+* [Quick Sort](https://en.wikipedia.org/wiki/Quicksort)
+* [Merge Sort](https://en.wikipedia.org/wiki/Merge_sort)
+* [Selection Sort](https://en.wikipedia.org/wiki/Selection_sort) TODO
+* [Counting Sort](https://en.wikipedia.org/wiki/Counting_sort) TODO
+* [Shell Sort](https://en.wikipedia.org/wiki/Shellsort) TODO
+* [Radix Sort](https://en.wikipedia.org/wiki/Radix_sort) TODO
+* [Bucket Sort](https://en.wikipedia.org/wiki/Bucket_sort) TODO
+
 ## Controls
-| **Key**   | **Action**           |
-| --------- | -------------------- |
-| **Space** | _Shuffle the array_  |
-| **B**     | _Bubble Sort_        |
-| **I**     | _Insertion Sort_     |
+| **Key**   | **Action**          |
+| --------- | ------------------- |
+| **ESC**   | _Close program_     |
+| **Space** | _Shuffle the array_ |
+| **B**     | _Bubble Sort_       |
+| **I**     | _Insertion Sort_    |
+| **H**     | _Heap Sort_         |
+| **Q**     | _Quick Sort_        |
+| **M**     | _Merge Sort_        |
