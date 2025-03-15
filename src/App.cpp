@@ -9,6 +9,33 @@ Application::Application()
     for(int i=1; i<=n; i++)
         this->array.push_back(i * this->barHeight);
     random_shuffle(this->array.begin(), this->array.end());
+    int col;
+    std::cout<<"Bars' color (default: 0)[0 - White, 1 - Red, 2 - Green, 3 - Blue, 4 - Yellow, 5 - Magenta, 6 - Cyan]: ";
+    std::cin>>col;
+    switch(col)
+    {
+        case 1:
+            this->barColor = sf::Color::Red;
+        break;
+        case 2:
+            this->barColor = sf::Color::Green;
+        break;
+        case 3:
+            this->barColor = sf::Color::Blue;
+        break;
+        case 4:
+            this->barColor = sf::Color::Yellow;
+        break;
+        case 5:
+            this->barColor = sf::Color::Magenta;
+        break;
+        case 6:
+            this->barColor = sf::Color::Cyan;
+        break;
+        default:
+            this->barColor = sf::Color::White;
+        break;
+    }
     this->mainWindow.create(sf::VideoMode({this->screenWidth, this->screenHeight}), this->mainWindowTitle);
     this->mainWindow.setFramerateLimit(60);
     this->canPressAgain = true;
@@ -54,6 +81,8 @@ void Application::run(void)
             this->quickSort(0, this->n-1);
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::M))
             this->mergeSort(0, this->n-1);
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::S))
+            this->selectionSort();
         this->updateFrame();
     }
 }
@@ -64,7 +93,7 @@ void Application::updateFrame(void)
     for(int i=0; i<this->n; i++){
         this->bars[i]->setSize(sf::Vector2f(this->barWidth, this->array[i]));
         this->bars[i]->setPosition(sf::Vector2f(this->barWidth * (2 * i + 1), this->screenHeight - this->array[i]));
-        this->bars[i]->setFillColor(sf::Color::White);
+        this->bars[i]->setFillColor(this->barColor);
         this->mainWindow.draw(*bars[i]);
     }
     mainWindow.display();
@@ -212,5 +241,17 @@ void Application::merge(int left, int mid, int right)
         this->updateFrame();
         j++;
         k++;
+    }
+}
+
+void Application::selectionSort()
+{
+    for(int i=0; i<this->n-1; i++){
+        int minIndex = i;
+        for(int j=i+1; j<this->n; j++)
+            if(this->array[j] < this->array[minIndex])
+                minIndex = j; 
+        this->swap(this->array[i], this->array[minIndex]);
+        this->updateFrame();
     }
 }

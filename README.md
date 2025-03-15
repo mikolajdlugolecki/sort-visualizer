@@ -43,8 +43,7 @@ make
 * [Heap Sort](https://en.wikipedia.org/wiki/Heapsort)
 * [Quick Sort](https://en.wikipedia.org/wiki/Quicksort)
 * [Merge Sort](https://en.wikipedia.org/wiki/Merge_sort)
-* [Selection Sort](https://en.wikipedia.org/wiki/Selection_sort) TODO
-* [Counting Sort](https://en.wikipedia.org/wiki/Counting_sort) TODO
+* [Selection Sort](https://en.wikipedia.org/wiki/Selection_sort)
 * [Shell Sort](https://en.wikipedia.org/wiki/Shellsort) TODO
 * [Radix Sort](https://en.wikipedia.org/wiki/Radix_sort) TODO
 * [Bucket Sort](https://en.wikipedia.org/wiki/Bucket_sort) TODO
@@ -59,3 +58,4 @@ make
 | **H**     | _Heap Sort_         |
 | **Q**     | _Quick Sort_        |
 | **M**     | _Merge Sort_        |
+| **S**     | _Selection Sort_    |

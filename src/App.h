@@ -27,6 +27,7 @@ private:
     int n;
     float barWidth;
     float barHeight;
+    sf::Color barColor;
     std::vector<sf::RectangleShape*> bars;
     void updateFrame(void);
     void shuffleArray(void);
@@ -39,4 +40,5 @@ private:
     int divide(int left, int right);
     void mergeSort(int left, int right);
     void merge(int left, int mid, int right);
+    void selectionSort();
 };
