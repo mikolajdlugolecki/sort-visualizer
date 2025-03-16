@@ -44,7 +44,9 @@ make
 * [Quick Sort](https://en.wikipedia.org/wiki/Quicksort)
 * [Merge Sort](https://en.wikipedia.org/wiki/Merge_sort)
 * [Selection Sort](https://en.wikipedia.org/wiki/Selection_sort)
-* [Shell Sort](https://en.wikipedia.org/wiki/Shellsort) TODO
+* [Shell Sort](https://en.wikipedia.org/wiki/Shellsort)
+* [Cocktail Sort](https://en.wikipedia.org/wiki/Cocktail_shaker_sort)
+* [Gnome Sort](https://en.wikipedia.org/wiki/Gnome_sort)
 * [Radix Sort](https://en.wikipedia.org/wiki/Radix_sort) TODO
 * [Bucket Sort](https://en.wikipedia.org/wiki/Bucket_sort) TODO
 
@@ -59,3 +61,6 @@ make
 | **Q**     | _Quick Sort_        |
 | **M**     | _Merge Sort_        |
 | **S**     | _Selection Sort_    |
+| **L**     | _Shell Sort_        |
+| **C**     | _Cocktail Sort_     |
+| **G**     | _Gnome Sort_        |

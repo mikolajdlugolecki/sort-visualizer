@@ -83,12 +83,26 @@ void Application::run(void)
             this->mergeSort(0, this->n-1);
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::S))
             this->selectionSort();
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::L))
+            this->shellSort();
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::C))
+            this->cocktailSort();
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::G))
+            this->gnomeSort();
         this->updateFrame();
     }
 }
 
 void Application::updateFrame(void)
 {
+    const sf::Font font("./../fonts/DepartureMonoNerdFont-Regular.otf");
+    sf::Text algorithmNameText(font, this->algorithmName);
+    sf::Text algorithmTimeComplexityText(font, this->algorithmTimeComplexity);
+    sf::Text algorithmSpaceComplexityText(font, this->algorithmSpaceComplexity);
+    algorithmTimeComplexityText.setCharacterSize(20);
+    algorithmSpaceComplexityText.setCharacterSize(20);
+    algorithmTimeComplexityText.setPosition(sf::Vector2f(0.0f, 50.0f));
+    algorithmSpaceComplexityText.setPosition(sf::Vector2f(0.0f, 80.0f));
     mainWindow.clear();
     for(int i=0; i<this->n; i++){
         this->bars[i]->setSize(sf::Vector2f(this->barWidth, this->array[i]));
@@ -96,11 +110,17 @@ void Application::updateFrame(void)
         this->bars[i]->setFillColor(this->barColor);
         this->mainWindow.draw(*bars[i]);
     }
+    mainWindow.draw(algorithmNameText);
+    mainWindow.draw(algorithmTimeComplexityText);
+    mainWindow.draw(algorithmSpaceComplexityText);
     mainWindow.display();
 }
 
 void Application::shuffleArray(void)
 {
+    this->algorithmName = "";
+    this->algorithmTimeComplexity = "";
+    this->algorithmSpaceComplexity = "";
     random_shuffle(this->array.begin(), this->array.end());
     this->updateFrame();
 }
@@ -114,6 +134,9 @@ void Application::swap(int &a, int &b)
 
 void Application::bubbleSort()
 {
+    this->algorithmName = "Bubble Sort";
+    this->algorithmTimeComplexity = "Time: O(n^2)";
+    this->algorithmSpaceComplexity = "Space: O(1)";
     bool swapped;
     for(int i=0; i<n-1; i++){
         swapped = false;
@@ -130,6 +153,9 @@ void Application::bubbleSort()
 
 void Application::insertionSort()
 {
+    this->algorithmName = "Insertion Sort";
+    this->algorithmTimeComplexity = "Time: O(n^2)";
+    this->algorithmSpaceComplexity = "Space: O(1)";
     for(int i=1; i<this->n; ++i){
         int key = this->array[i];
         int j = i-1;
@@ -145,6 +171,9 @@ void Application::insertionSort()
 
 void Application::heapSort()
 {
+    this->algorithmName = "Heap Sort";
+    this->algorithmTimeComplexity = "Time: O(n*log n)";
+    this->algorithmSpaceComplexity = "Space: O(1)";
     for(int i=n/2-1; i>=0; i--)
         constructHeap(this->array, this->n, i);
     for(int i=n-1; i>0; i--) {
@@ -172,6 +201,9 @@ void Application::constructHeap(std::vector<int> &arr, int n, int i)
 
 void Application::quickSort(int left, int right)
 {
+    this->algorithmName = "Quick Sort";
+    this->algorithmTimeComplexity = "Time: O(n*log n)";
+    this->algorithmSpaceComplexity = "Space: O(1)";
     if(left < right){
         int pivot = this->divide(left, right);
         quickSort(left, pivot-1);
@@ -197,6 +229,9 @@ int Application::divide(int left, int right)
 
 void Application::mergeSort(int left, int right)
 {
+    this->algorithmName = "Merge Sort";
+    this->algorithmTimeComplexity = "Time: O(n*log n)";
+    this->algorithmSpaceComplexity = "Space: O(n)";
     if(left < right){
         int mid = left+(right-left)/2;
         mergeSort(left, mid);
@@ -246,6 +281,9 @@ void Application::merge(int left, int mid, int right)
 
 void Application::selectionSort()
 {
+    this->algorithmName = "Selection Sort";
+    this->algorithmTimeComplexity = "Time: O(n^2)";
+    this->algorithmSpaceComplexity = "Space: O(1)";
     for(int i=0; i<this->n-1; i++){
         int minIndex = i;
         for(int j=i+1; j<this->n; j++)
@@ -254,4 +292,74 @@ void Application::selectionSort()
         this->swap(this->array[i], this->array[minIndex]);
         this->updateFrame();
     }
+}
+
+void Application::shellSort()
+{
+    this->algorithmName = "Shell Sort";
+    this->algorithmTimeComplexity = "Time: O(n^4/3)";
+    this->algorithmSpaceComplexity = "Space: O(1)";
+    for(int gap=n/2; gap>0; gap/=2){
+        for(int i=gap; i<n; i++){
+            int tmp = this->array[i];
+            int j;            
+            for(j=i; j >= gap && this->array[j-gap] > tmp; j -= gap){
+                this->array[j] = this->array[j-gap];
+                this->updateFrame();
+            }
+            this->array[j] = tmp;
+            this->updateFrame();
+        }
+    }
+}
+
+void Application::cocktailSort()
+{
+    this->algorithmName = "Cocktail Sort";
+    this->algorithmTimeComplexity = "Time: O(n^2)";
+    this->algorithmSpaceComplexity = "Space: O(1)";
+    bool swapped = true;
+    int start = 0;
+    int end = this->n-1;
+    while(swapped){
+        swapped = false;
+        for(int i=start; i<end; i++){
+            if(this->array[i] > this->array[i+1]){
+                this->swap(this->array[i], this->array[i+1]);
+                this->updateFrame();
+                swapped = true;
+            }
+        }
+        if(!swapped)
+            break;
+        swapped = false;
+        end--;
+        for(int i=end-1; i>=start; i--){
+            if(this->array[i] > this->array[i+1]){
+            this->swap(this->array[i], this->array[i+1]);
+            this->updateFrame();
+            swapped = true;
+            }
+        }
+        start++;
+    }
+}
+
+void Application::gnomeSort()
+{
+    this->algorithmName = "Gnome Sort";
+    this->algorithmTimeComplexity = "Time: O(n^2)";
+    this->algorithmSpaceComplexity = "Space: O(1)";
+    int index = 0; 
+    while(index < this->n){ 
+        if(index == 0) 
+            index++; 
+        if(this->array[index] >= this->array[index-1]) 
+            index++; 
+        else{ 
+            this->swap(this->array[index], this->array[index-1]);
+            this->updateFrame(); 
+            index--; 
+        } 
+    } 
 }

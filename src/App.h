@@ -28,6 +28,9 @@ private:
     float barWidth;
     float barHeight;
     sf::Color barColor;
+    std::string algorithmName;
+    std::string algorithmTimeComplexity;
+    std::string algorithmSpaceComplexity;
     std::vector<sf::RectangleShape*> bars;
     void updateFrame(void);
     void shuffleArray(void);
@@ -41,4 +44,7 @@ private:
     void mergeSort(int left, int right);
     void merge(int left, int mid, int right);
     void selectionSort();
+    void shellSort();
+    void cocktailSort();
+    void gnomeSort();
 };
