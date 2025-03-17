@@ -89,6 +89,8 @@ void Application::run(void)
             this->cocktailSort();
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::G))
             this->gnomeSort();
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::O))
+            this->combSort();
         this->updateFrame();
     }
 }
@@ -362,4 +364,32 @@ void Application::gnomeSort()
             index--; 
         } 
     } 
+}
+
+void Application::combSort()
+{
+    this->algorithmName = "Comb Sort";
+    this->algorithmTimeComplexity = "Time: O(n^2)";
+    this->algorithmSpaceComplexity = "Space: O(1)";
+    int gap = this->n;
+    bool swapped = true;
+    while(gap != 1 || swapped){
+        gap = getNextGap(gap);
+        swapped = false;
+        for(int i=0; i<this->n-gap; i++){
+            if(this->array[i] > this->array[i+gap]){
+                this->swap(this->array[i], this->array[i+gap]);
+                this->updateFrame();
+                swapped = true;
+            }
+        }
+    }
+}
+
+int Application::getNextGap(int gap)
+{
+    gap = gap*10/13;
+    if(gap < 1)
+        return 1;
+    return gap;
 }

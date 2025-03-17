@@ -47,4 +47,6 @@ private:
     void shellSort();
     void cocktailSort();
     void gnomeSort();
+    void combSort();
+    int getNextGap(int gap);
 };
