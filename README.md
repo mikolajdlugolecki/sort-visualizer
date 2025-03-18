@@ -48,6 +48,7 @@ make
 * [Cocktail Sort](https://en.wikipedia.org/wiki/Cocktail_shaker_sort)
 * [Gnome Sort](https://en.wikipedia.org/wiki/Gnome_sort)
 * [Comb Sort](https://en.wikipedia.org/wiki/Comb_sort)
+* [Tim Sort](https://en.wikipedia.org/wiki/Timsort)
 * [Radix Sort](https://en.wikipedia.org/wiki/Radix_sort) TODO
 * [Bucket Sort](https://en.wikipedia.org/wiki/Bucket_sort) TODO
 
@@ -66,3 +67,4 @@ make
 | **C**     | _Cocktail Sort_     |
 | **G**     | _Gnome Sort_        |
 | **O**     | _Comb Sort_         |
+| **T**     | _Tim Sort_          |

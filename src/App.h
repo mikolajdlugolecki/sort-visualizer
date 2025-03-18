@@ -49,4 +49,6 @@ private:
     void gnomeSort();
     void combSort();
     int getNextGap(int gap);
+    void timSort(int run);
+    void timSortInsertion(int left, int right);
 };

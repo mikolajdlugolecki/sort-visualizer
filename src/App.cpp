@@ -91,6 +91,8 @@ void Application::run(void)
             this->gnomeSort();
         if(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::O))
             this->combSort();
+        if(sf::Keyboard::isKeyPressed(sf::Keyboard::Key::T))
+            this->timSort(this->n/10);
         this->updateFrame();
     }
 }
@@ -392,4 +394,36 @@ int Application::getNextGap(int gap)
     if(gap < 1)
         return 1;
     return gap;
+}
+
+void Application::timSort(int run)
+{
+    this->algorithmName = "Tim Sort";
+    this->algorithmTimeComplexity = "Time: O(n*log n)";
+    this->algorithmSpaceComplexity = "Space: O(n)";
+    for(int i=0; i<this->n; i+=run) 
+        timSortInsertion(i, std::min((i+run-1), this->n-1)); 
+    for(int size=run; size<n; size=2*size){ 
+        for(int left=0; left<n; left+=2*size){ 
+        int mid = left+size-1; 
+        int right = std::min((left+2*size-1), this->n-1); 
+        if(mid < right) 
+            merge(left, mid, right); 
+        } 
+    } 
+}
+
+void Application::timSortInsertion(int left, int right)
+{
+    for(int i=left+1; i<=right; i++){ 
+        int tmp = this->array[i]; 
+        int j = i-1; 
+        while(j >= left && this->array[j] > tmp){ 
+            this->array[j+1] = this->array[j]; 
+            this->updateFrame();
+            j--; 
+        } 
+        this->array[j+1] = tmp;
+        this->updateFrame(); 
+    } 
 }
